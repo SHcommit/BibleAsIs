@@ -1,0 +1,395 @@
+digraph {
+  AcknowList [fillcolor=coral1 shape=cylinder style=filled]
+  Bible [fillcolor=coral1 shape=cylinder style=filled]
+  BibleAsIs [fillcolor=deepskyblue penwidth="1.5" shape=box3d style=filled]
+  BibleAsIsBibleFeedFeatureDemoApp [fillcolor=deepskyblue penwidth="1.5" shape=box3d style=filled]
+  BibleAsIsBibleHeartHistoryFeatureDemoApp [fillcolor=deepskyblue penwidth="1.5" shape=box3d style=filled]
+  BibleAsIsBibleHighlightFeatureDemoApp [fillcolor=deepskyblue penwidth="1.5" shape=box3d style=filled]
+  BibleAsIsBibleHomeFeatureDemoApp [fillcolor=deepskyblue penwidth="1.5" shape=box3d style=filled]
+  BibleAsIsBibleMccCheyneChallengeFeatureDemoApp [fillcolor=deepskyblue penwidth="1.5" shape=box3d style=filled]
+  BibleAsIsBibleNoteFeatureDemoApp [fillcolor=deepskyblue penwidth="1.5" shape=box3d style=filled]
+  BibleAsIsBibleNoteHomeFeatureDemoApp [fillcolor=deepskyblue penwidth="1.5" shape=box3d style=filled]
+  BibleAsIsBibleReadingChecklistFeatureDemoApp [fillcolor=deepskyblue penwidth="1.5" shape=box3d style=filled]
+  BibleAsIsBibleReadingFeatureDemoApp [fillcolor=deepskyblue penwidth="1.5" shape=box3d style=filled]
+  BibleAsIsBibleSearchFeatureDemoApp [fillcolor=deepskyblue penwidth="1.5" shape=box3d style=filled]
+  BibleAsIsMyActivityFeatureDemoApp [fillcolor=deepskyblue penwidth="1.5" shape=box3d style=filled]
+  BibleAsIsSettingFeatureDemoApp [fillcolor=deepskyblue penwidth="1.5" shape=box3d style=filled]
+  BibleFeedFeature [fillcolor=coral1 shape=cylinder style=filled]
+  BibleFeedInterface [fillcolor=coral1 shape=cylinder style=filled]
+  BibleHeartHistoryFeature [fillcolor=coral1 shape=cylinder style=filled]
+  BibleHeartHistoryInterface [fillcolor=coral1 shape=cylinder style=filled]
+  BibleHighlightFeature [fillcolor=coral1 shape=cylinder style=filled]
+  BibleHighlightInterface [fillcolor=coral1 shape=cylinder style=filled]
+  BibleHomeFeature [fillcolor=coral1 shape=cylinder style=filled]
+  BibleHomeInterface [fillcolor=coral1 shape=cylinder style=filled]
+  BibleInterface [fillcolor=coral1 shape=cylinder style=filled]
+  BibleMccCheyneChallengeFeature [fillcolor=coral1 shape=cylinder style=filled]
+  BibleMccCheyneChallengeInterface [fillcolor=coral1 shape=cylinder style=filled]
+  BibleNoteFeature [fillcolor=coral1 shape=cylinder style=filled]
+  BibleNoteHomeFeature [fillcolor=coral1 shape=cylinder style=filled]
+  BibleNoteHomeInterface [fillcolor=coral1 shape=cylinder style=filled]
+  BibleNoteInterface [fillcolor=coral1 shape=cylinder style=filled]
+  BibleReadingChecklistFeature [fillcolor=coral1 shape=cylinder style=filled]
+  BibleReadingChecklistInterface [fillcolor=coral1 shape=cylinder style=filled]
+  BibleReadingFeature [fillcolor=coral1 shape=cylinder style=filled]
+  BibleReadingInterface [fillcolor=coral1 shape=cylinder style=filled]
+  BibleSearchFeature [fillcolor=coral1 shape=cylinder style=filled]
+  BibleSearchInterface [fillcolor=coral1 shape=cylinder style=filled]
+  BibleTests [fillcolor=limegreen shape=octagon style=filled]
+  Catalog [fillcolor=deepskyblue penwidth="1.5" shape=box3d style=filled]
+  Common [fillcolor=coral1 shape=cylinder style=filled]
+  Core [fillcolor=coral1 shape=cylinder style=filled]
+  CoreInterface [fillcolor=coral1 shape=cylinder style=filled]
+  CoreTests [fillcolor=limegreen shape=octagon style=filled]
+  Data [fillcolor=coral1 shape=cylinder style=filled]
+  DataTests [fillcolor=limegreen shape=octagon style=filled]
+  DesignSystem [fillcolor=coral1 shape=cylinder style=filled]
+  DesignSystemInterface [fillcolor=coral1 shape=cylinder style=filled]
+  DesignSystemItems [fillcolor=coral1 shape=cylinder style=filled]
+  DesignSystemTests [fillcolor=limegreen shape=octagon style=filled]
+  Domain [fillcolor=coral1 shape=cylinder style=filled]
+  DomainEntity [fillcolor=coral1 shape=cylinder style=filled]
+  DomainInterface [fillcolor=coral1 shape=cylinder style=filled]
+  DomainTests [fillcolor=limegreen shape=octagon style=filled]
+  Lottie [fillcolor=lightskyblue1 shape=trapezium style=filled]
+  MyActivityFeature [fillcolor=coral1 shape=cylinder style=filled]
+  MyActivityInterface [fillcolor=coral1 shape=cylinder style=filled]
+  ProxyThirdParty [fillcolor=coral1 shape=cylinder style=filled]
+  ReactorKit [fillcolor=coral1 shape=cylinder style=filled]
+  ReactorKitRuntime [fillcolor=coral1 shape=cylinder style=filled]
+  RxBlocking [fillcolor=coral1 shape=cylinder style=filled]
+  RxCocoa [fillcolor=coral1 shape=cylinder style=filled]
+  RxCocoaRuntime [fillcolor=coral1 shape=cylinder style=filled]
+  RxProxyThirdParty [fillcolor=coral1 shape=cylinder style=filled]
+  RxRelay [fillcolor=darkgoldenrod1 shape=cylinder style=filled]
+  RxSwift [fillcolor=darkgoldenrod1 shape=cylinder style=filled]
+  RxTest [fillcolor=coral1 shape=cylinder style=filled]
+  SettingFeature [fillcolor=coral1 shape=cylinder style=filled]
+  SettingInterface [fillcolor=coral1 shape=cylinder style=filled]
+  Swinject [fillcolor=coral1 shape=cylinder style=filled]
+  Then [fillcolor=coral1 shape=cylinder style=filled]
+  WeakMapTable [fillcolor=coral1 shape=cylinder style=filled]
+  _LottieStub [fillcolor=coral1 shape=cylinder style=filled]
+  Bible -> DomainEntity
+  Bible -> BibleInterface
+  Bible -> Common
+  Bible -> ProxyThirdParty
+  BibleAsIs -> Data
+  BibleAsIs -> RxProxyThirdParty
+  BibleAsIs -> BibleReadingFeature
+  BibleAsIs -> Common
+  BibleAsIs -> BibleNoteHomeFeature
+  BibleAsIs -> SettingFeature
+  BibleAsIs -> BibleHomeInterface
+  BibleAsIs -> BibleReadingChecklistFeature
+  BibleAsIs -> MyActivityFeature
+  BibleAsIs -> BibleHomeFeature
+  BibleAsIs -> BibleNoteFeature
+  BibleAsIs -> Bible
+  BibleAsIs -> BibleMccCheyneChallengeFeature
+  BibleAsIs -> BibleFeedInterface
+  BibleAsIs -> BibleFeedFeature
+  BibleAsIs -> BibleHeartHistoryFeature
+  BibleAsIs -> Domain
+  BibleAsIs -> ProxyThirdParty
+  BibleAsIs -> BibleHighlightFeature
+  BibleAsIs -> DomainEntity
+  BibleAsIs -> BibleSearchFeature
+  BibleAsIs -> MyActivityInterface
+  BibleAsIs -> Core
+  BibleAsIs -> DesignSystemItems
+  BibleAsIs -> DesignSystem
+  BibleAsIsBibleFeedFeatureDemoApp -> Common
+  BibleAsIsBibleFeedFeatureDemoApp -> BibleHeartHistoryFeature
+  BibleAsIsBibleFeedFeatureDemoApp -> BibleMccCheyneChallengeFeature
+  BibleAsIsBibleFeedFeatureDemoApp -> BibleNoteHomeFeature
+  BibleAsIsBibleFeedFeatureDemoApp -> Core
+  BibleAsIsBibleFeedFeatureDemoApp -> Domain
+  BibleAsIsBibleFeedFeatureDemoApp -> Bible
+  BibleAsIsBibleFeedFeatureDemoApp -> Data
+  BibleAsIsBibleFeedFeatureDemoApp -> BibleFeedFeature
+  BibleAsIsBibleFeedFeatureDemoApp -> BibleReadingChecklistFeature
+  BibleAsIsBibleFeedFeatureDemoApp -> ProxyThirdParty
+  BibleAsIsBibleFeedFeatureDemoApp -> BibleReadingFeature
+  BibleAsIsBibleHeartHistoryFeatureDemoApp -> Data
+  BibleAsIsBibleHeartHistoryFeatureDemoApp -> Core
+  BibleAsIsBibleHeartHistoryFeatureDemoApp -> Bible
+  BibleAsIsBibleHeartHistoryFeatureDemoApp -> BibleHeartHistoryFeature
+  BibleAsIsBibleHeartHistoryFeatureDemoApp -> Common
+  BibleAsIsBibleHeartHistoryFeatureDemoApp -> Domain
+  BibleAsIsBibleHighlightFeatureDemoApp -> BibleHighlightFeature
+  BibleAsIsBibleHighlightFeatureDemoApp -> BibleHighlightInterface
+  BibleAsIsBibleHighlightFeatureDemoApp -> Core
+  BibleAsIsBibleHighlightFeatureDemoApp -> Domain
+  BibleAsIsBibleHighlightFeatureDemoApp -> Common
+  BibleAsIsBibleHighlightFeatureDemoApp -> Data
+  BibleAsIsBibleHighlightFeatureDemoApp -> ProxyThirdParty
+  BibleAsIsBibleHighlightFeatureDemoApp -> Bible
+  BibleAsIsBibleHomeFeatureDemoApp -> ProxyThirdParty
+  BibleAsIsBibleHomeFeatureDemoApp -> BibleReadingFeature
+  BibleAsIsBibleHomeFeatureDemoApp -> Core
+  BibleAsIsBibleHomeFeatureDemoApp -> Domain
+  BibleAsIsBibleHomeFeatureDemoApp -> Data
+  BibleAsIsBibleHomeFeatureDemoApp -> BibleSearchFeature
+  BibleAsIsBibleHomeFeatureDemoApp -> BibleHomeFeature
+  BibleAsIsBibleMccCheyneChallengeFeatureDemoApp -> Domain
+  BibleAsIsBibleMccCheyneChallengeFeatureDemoApp -> BibleMccCheyneChallengeFeature
+  BibleAsIsBibleMccCheyneChallengeFeatureDemoApp -> Bible
+  BibleAsIsBibleMccCheyneChallengeFeatureDemoApp -> Core
+  BibleAsIsBibleNoteFeatureDemoApp -> BibleNoteInterface
+  BibleAsIsBibleNoteFeatureDemoApp -> Bible
+  BibleAsIsBibleNoteFeatureDemoApp -> RxProxyThirdParty
+  BibleAsIsBibleNoteFeatureDemoApp -> Core
+  BibleAsIsBibleNoteFeatureDemoApp -> BibleNoteFeature
+  BibleAsIsBibleNoteFeatureDemoApp -> ProxyThirdParty
+  BibleAsIsBibleNoteFeatureDemoApp -> Common
+  BibleAsIsBibleNoteFeatureDemoApp -> Data
+  BibleAsIsBibleNoteFeatureDemoApp -> Domain
+  BibleAsIsBibleNoteHomeFeatureDemoApp -> Bible
+  BibleAsIsBibleNoteHomeFeatureDemoApp -> Core
+  BibleAsIsBibleNoteHomeFeatureDemoApp -> Common
+  BibleAsIsBibleNoteHomeFeatureDemoApp -> ProxyThirdParty
+  BibleAsIsBibleNoteHomeFeatureDemoApp -> BibleNoteHomeFeature
+  BibleAsIsBibleNoteHomeFeatureDemoApp -> Data
+  BibleAsIsBibleNoteHomeFeatureDemoApp -> Domain
+  BibleAsIsBibleNoteHomeFeatureDemoApp -> BibleNoteFeature
+  BibleAsIsBibleReadingChecklistFeatureDemoApp -> BibleReadingChecklistFeature
+  BibleAsIsBibleReadingChecklistFeatureDemoApp -> Bible
+  BibleAsIsBibleReadingChecklistFeatureDemoApp -> Data
+  BibleAsIsBibleReadingChecklistFeatureDemoApp -> BibleReadingChecklistInterface
+  BibleAsIsBibleReadingChecklistFeatureDemoApp -> Core
+  BibleAsIsBibleReadingChecklistFeatureDemoApp -> ProxyThirdParty
+  BibleAsIsBibleReadingChecklistFeatureDemoApp -> Domain
+  BibleAsIsBibleReadingChecklistFeatureDemoApp -> Common
+  BibleAsIsBibleReadingFeatureDemoApp -> Core
+  BibleAsIsBibleReadingFeatureDemoApp -> BibleReadingFeature
+  BibleAsIsBibleReadingFeatureDemoApp -> BibleReadingInterface
+  BibleAsIsBibleReadingFeatureDemoApp -> Domain
+  BibleAsIsBibleReadingFeatureDemoApp -> Data
+  BibleAsIsBibleReadingFeatureDemoApp -> Common
+  BibleAsIsBibleSearchFeatureDemoApp -> ProxyThirdParty
+  BibleAsIsBibleSearchFeatureDemoApp -> Bible
+  BibleAsIsBibleSearchFeatureDemoApp -> Domain
+  BibleAsIsBibleSearchFeatureDemoApp -> Core
+  BibleAsIsBibleSearchFeatureDemoApp -> BibleSearchFeature
+  BibleAsIsBibleSearchFeatureDemoApp -> Data
+  BibleAsIsMyActivityFeatureDemoApp -> BibleReadingChecklistFeature
+  BibleAsIsMyActivityFeatureDemoApp -> Domain
+  BibleAsIsMyActivityFeatureDemoApp -> BibleMccCheyneChallengeFeature
+  BibleAsIsMyActivityFeatureDemoApp -> ProxyThirdParty
+  BibleAsIsMyActivityFeatureDemoApp -> BibleHighlightFeature
+  BibleAsIsMyActivityFeatureDemoApp -> BibleHeartHistoryFeature
+  BibleAsIsMyActivityFeatureDemoApp -> MyActivityFeature
+  BibleAsIsMyActivityFeatureDemoApp -> MyActivityInterface
+  BibleAsIsMyActivityFeatureDemoApp -> BibleNoteHomeFeature
+  BibleAsIsMyActivityFeatureDemoApp -> Bible
+  BibleAsIsMyActivityFeatureDemoApp -> Data
+  BibleAsIsMyActivityFeatureDemoApp -> Core
+  BibleAsIsSettingFeatureDemoApp -> SettingFeature
+  BibleAsIsSettingFeatureDemoApp -> Core
+  BibleAsIsSettingFeatureDemoApp -> Data
+  BibleAsIsSettingFeatureDemoApp -> Domain
+  BibleFeedFeature -> DomainInterface
+  BibleFeedFeature -> BibleNoteHomeInterface
+  BibleFeedFeature -> CoreInterface
+  BibleFeedFeature -> AcknowList
+  BibleFeedFeature -> BibleMccCheyneChallengeInterface
+  BibleFeedFeature -> RxProxyThirdParty
+  BibleFeedFeature -> BibleReadingInterface
+  BibleFeedFeature -> Common
+  BibleFeedFeature -> BibleFeedInterface
+  BibleFeedFeature -> DesignSystem
+  BibleFeedFeature -> BibleHeartHistoryInterface
+  BibleFeedFeature -> BibleReadingChecklistInterface
+  BibleFeedFeature -> ProxyThirdParty
+  BibleFeedFeature -> DesignSystemItems
+  BibleFeedFeature -> DomainEntity
+  BibleFeedInterface -> DomainEntity
+  BibleFeedInterface -> DesignSystemItems
+  BibleFeedInterface -> ProxyThirdParty
+  BibleHeartHistoryFeature -> DesignSystem
+  BibleHeartHistoryFeature -> RxProxyThirdParty
+  BibleHeartHistoryFeature -> DesignSystemItems
+  BibleHeartHistoryFeature -> DomainEntity
+  BibleHeartHistoryFeature -> Common
+  BibleHeartHistoryFeature -> DomainInterface
+  BibleHeartHistoryFeature -> BibleHeartHistoryInterface
+  BibleHeartHistoryFeature -> ProxyThirdParty
+  BibleHeartHistoryInterface -> DomainEntity
+  BibleHighlightFeature -> DomainInterface
+  BibleHighlightFeature -> ProxyThirdParty
+  BibleHighlightFeature -> BibleReadingInterface
+  BibleHighlightFeature -> DesignSystem
+  BibleHighlightFeature -> Common
+  BibleHighlightFeature -> DomainEntity
+  BibleHighlightFeature -> BibleHighlightInterface
+  BibleHighlightFeature -> DesignSystemItems
+  BibleHighlightFeature -> RxProxyThirdParty
+  BibleHighlightInterface -> DomainEntity
+  BibleHomeFeature -> BibleReadingInterface
+  BibleHomeFeature -> BibleHomeInterface
+  BibleHomeFeature -> ProxyThirdParty
+  BibleHomeFeature -> CoreInterface
+  BibleHomeFeature -> BibleSearchInterface
+  BibleHomeFeature -> Common
+  BibleHomeFeature -> DesignSystem
+  BibleHomeFeature -> DomainInterface
+  BibleHomeFeature -> DesignSystemInterface
+  BibleHomeFeature -> DomainEntity
+  BibleHomeFeature -> RxProxyThirdParty
+  BibleHomeFeature -> DesignSystemItems
+  BibleHomeInterface -> ProxyThirdParty
+  BibleHomeInterface -> DomainEntity
+  BibleInterface -> DomainEntity
+  BibleMccCheyneChallengeFeature -> DomainInterface
+  BibleMccCheyneChallengeFeature -> ProxyThirdParty
+  BibleMccCheyneChallengeFeature -> DomainEntity
+  BibleMccCheyneChallengeFeature -> DesignSystemItems
+  BibleMccCheyneChallengeFeature -> BibleMccCheyneChallengeInterface
+  BibleMccCheyneChallengeFeature -> BibleReadingInterface
+  BibleMccCheyneChallengeFeature -> DesignSystem
+  BibleMccCheyneChallengeFeature -> RxProxyThirdParty
+  BibleMccCheyneChallengeInterface -> ProxyThirdParty
+  BibleMccCheyneChallengeInterface -> DomainEntity
+  BibleMccCheyneChallengeInterface -> DesignSystemItems
+  BibleNoteFeature -> Common
+  BibleNoteFeature -> BibleNoteInterface
+  BibleNoteFeature -> DomainEntity
+  BibleNoteFeature -> DomainInterface
+  BibleNoteFeature -> ProxyThirdParty
+  BibleNoteFeature -> RxProxyThirdParty
+  BibleNoteFeature -> DesignSystemItems
+  BibleNoteFeature -> DesignSystem
+  BibleNoteFeature -> CoreInterface
+  BibleNoteHomeFeature -> ProxyThirdParty
+  BibleNoteHomeFeature -> BibleNoteHomeInterface
+  BibleNoteHomeFeature -> DesignSystemItems
+  BibleNoteHomeFeature -> DomainInterface
+  BibleNoteHomeFeature -> Common
+  BibleNoteHomeFeature -> DesignSystem
+  BibleNoteHomeFeature -> DomainEntity
+  BibleNoteHomeFeature -> BibleNoteInterface
+  BibleNoteHomeFeature -> RxProxyThirdParty
+  BibleNoteHomeInterface -> DomainEntity
+  BibleNoteHomeInterface -> BibleNoteInterface
+  BibleNoteHomeInterface -> ProxyThirdParty
+  BibleNoteInterface -> DomainEntity
+  BibleNoteInterface -> ProxyThirdParty
+  BibleReadingChecklistFeature -> RxProxyThirdParty
+  BibleReadingChecklistFeature -> DomainEntity
+  BibleReadingChecklistFeature -> Common
+  BibleReadingChecklistFeature -> DesignSystem
+  BibleReadingChecklistFeature -> DomainInterface
+  BibleReadingChecklistFeature -> CoreInterface
+  BibleReadingChecklistFeature -> DesignSystemItems
+  BibleReadingChecklistFeature -> BibleReadingChecklistInterface
+  BibleReadingChecklistFeature -> ProxyThirdParty
+  BibleReadingChecklistInterface -> DomainEntity
+  BibleReadingFeature -> BibleReadingInterface
+  BibleReadingFeature -> RxProxyThirdParty
+  BibleReadingFeature -> DesignSystemItems
+  BibleReadingFeature -> BibleNoteInterface
+  BibleReadingFeature -> SettingInterface
+  BibleReadingFeature -> DomainEntity
+  BibleReadingFeature -> DomainInterface
+  BibleReadingFeature -> ProxyThirdParty
+  BibleReadingFeature -> DesignSystem
+  BibleReadingInterface -> ProxyThirdParty
+  BibleReadingInterface -> DesignSystemItems
+  BibleReadingInterface -> DomainEntity
+  BibleSearchFeature -> BibleReadingInterface
+  BibleSearchFeature -> Common
+  BibleSearchFeature -> DomainEntity
+  BibleSearchFeature -> DesignSystem
+  BibleSearchFeature -> DomainInterface
+  BibleSearchFeature -> DesignSystemItems
+  BibleSearchFeature -> RxProxyThirdParty
+  BibleSearchFeature -> ProxyThirdParty
+  BibleSearchFeature -> BibleSearchInterface
+  BibleSearchInterface -> ProxyThirdParty
+  BibleSearchInterface -> DomainEntity
+  BibleTests -> Bible
+  Catalog -> Core
+  Catalog -> Domain
+  Catalog -> DesignSystemItems
+  Catalog -> RxProxyThirdParty
+  Catalog -> ProxyThirdParty
+  Catalog -> DesignSystem
+  Common -> DomainEntity
+  Common -> ProxyThirdParty
+  Core -> CoreInterface
+  Core -> Common
+  Core -> ProxyThirdParty
+  Core -> DomainEntity
+  CoreInterface -> DomainInterface
+  CoreTests -> Core
+  Data -> DomainEntity
+  Data -> ProxyThirdParty
+  Data -> BibleInterface
+  Data -> CoreInterface
+  Data -> Common
+  Data -> DomainInterface
+  DataTests -> Data
+  DesignSystem -> DesignSystemItems
+  DesignSystem -> DomainEntity
+  DesignSystem -> Lottie
+  DesignSystem -> Common
+  DesignSystem -> DesignSystemInterface
+  DesignSystem -> _LottieStub
+  DesignSystem -> ProxyThirdParty
+  DesignSystemInterface -> DomainEntity
+  DesignSystemInterface -> DesignSystemItems
+  DesignSystemItems -> Domain
+  DesignSystemTests -> DesignSystemItems
+  DesignSystemTests -> DomainEntity
+  DesignSystemTests -> DesignSystemInterface
+  DesignSystemTests -> DesignSystem
+  Domain -> DomainEntity
+  Domain -> ProxyThirdParty
+  Domain -> DomainInterface
+  DomainInterface -> DomainEntity
+  DomainTests -> DomainInterface
+  DomainTests -> Domain
+  DomainTests -> DomainEntity
+  MyActivityFeature -> DesignSystemItems
+  MyActivityFeature -> RxProxyThirdParty
+  MyActivityFeature -> BibleHeartHistoryInterface
+  MyActivityFeature -> ProxyThirdParty
+  MyActivityFeature -> DesignSystem
+  MyActivityFeature -> BibleReadingChecklistFeature
+  MyActivityFeature -> DomainEntity
+  MyActivityFeature -> BibleHighlightInterface
+  MyActivityFeature -> MyActivityInterface
+  MyActivityFeature -> BibleMccCheyneChallengeInterface
+  MyActivityFeature -> Common
+  MyActivityFeature -> DomainInterface
+  MyActivityFeature -> BibleNoteHomeInterface
+  MyActivityInterface -> ProxyThirdParty
+  ProxyThirdParty -> Swinject
+  ProxyThirdParty -> Then
+  ReactorKit -> ReactorKitRuntime
+  ReactorKit -> RxSwift
+  ReactorKit -> WeakMapTable
+  RxBlocking -> RxSwift
+  RxCocoa -> RxRelay
+  RxCocoa -> RxSwift
+  RxCocoa -> RxCocoaRuntime
+  RxCocoaRuntime -> RxSwift
+  RxProxyThirdParty -> RxSwift
+  RxProxyThirdParty -> RxCocoa
+  RxProxyThirdParty -> RxRelay
+  RxProxyThirdParty -> ReactorKit
+  RxRelay -> RxSwift
+  RxTest -> RxSwift
+  SettingFeature -> DesignSystem
+  SettingFeature -> DesignSystemItems
+  SettingFeature -> DomainInterface
+  SettingFeature -> RxProxyThirdParty
+  SettingFeature -> ProxyThirdParty
+  SettingFeature -> Common
+  SettingFeature -> DomainEntity
+  SettingFeature -> BibleInterface
+  SettingFeature -> SettingInterface
+  SettingInterface -> DomainEntity
+  SettingInterface -> ProxyThirdParty
+}

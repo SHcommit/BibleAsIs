@@ -1,0 +1,24 @@
+//
+//  DateInfo.swift
+//  Domain
+//
+//  Created by 양승현 on 2/3/25.
+//  Copyright © 2025 seunghyun yang. All rights reserved.
+//
+
+import Foundation
+
+public struct DateInfo: Equatable, PrettyDebugStringConvertible {
+  public let year: Int
+  public let month: Int
+  public let day: Int
+  /// 0 (일요일) ~ 6 (토요일)
+  public let weekday: Weekday
+  
+  public init(year: Int, month: Int, day: Int, weekday: Weekday) {
+    self.year = year
+    self.month = month
+    self.day = day
+    self.weekday = weekday
+  }
+}

@@ -1,0 +1,10 @@
+11.11.0 - [FirebaseCore][I-COR000001] Configuring the default app.
+[Firebase/Crashlytics] Version 11.11.0
+11.11.0 - [FirebaseCrashlytics][I-CLS000000] [Crashlytics] Running on iPhone13,4, 18.3.2 (22D82)
+11.11.0 - [FirebaseCrashlytics][I-CLS000000] Generating Install ID
+11.11.0 - [FirebaseCrashlytics][I-CLS000000] [Crashlytics:Settings] No settings were cached
+11.11.0 - [FirebaseCrashlytics][I-CLS000000] [Crashlytics:Crash:Reports:Event] Firebase Analytics SDK not detected. Crash-free statistics and breadcrumbs will not be reported
+11.11.0 - [FirebaseCrashlytics][I-CLS000000] Automatic data collection is enabled.
+11.11.0 - [FirebaseCrashlytics][I-CLS000000] Unsent reports will be uploaded at startup
+Firebase Crashlytics 설정 완료
+11.11.0 - [FirebaseCrashlytics][I-CLS000000] Settings downloaded successfully
