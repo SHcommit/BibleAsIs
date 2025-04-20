@@ -5,3 +5,4 @@
 [submodule "Modules/DesignSystem"]
 	path = Modules/DesignSystem
 	url = https://github.com/SHcommit/BibleAsIsDesignSystem.git
+	branch = designSystemDevelop
