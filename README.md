@@ -46,19 +46,35 @@
 ![1111](https://github.com/user-attachments/assets/a1bd8f6e-bc9f-4e2b-ab5c-57ebea7beb0e)
 ![2222](https://github.com/user-attachments/assets/a66b7e62-d2a4-4a0b-8e08-6e7e2345c76a)
 
+## Role
+- Design
+- Wireframe, user flow 설계
+- Search Engine, DB 구축 등 디비 설계
+- iOS 앱 개발
+
+## Timeline & 마음가짐
+![image](https://github.com/user-attachments/assets/42802898-4273-4bde-b8c2-878c17b1096b)
+
+- 익숙하지 않은 기술이라도 적극적으로 공부하고 적용해 사용자가 느낄 수 있는 `자연스럽게` 동작하는 앱을 만들고 출시해보자!
+- 더 좋은 화면 구성을 위해 다양한 성경 앱 뿐 아니라 다른 도서 앱들도 분석하며 좋은들을 참고해보자!
+- user flow의 자연스러움을 위해 **애니메이션을 자유롭게 도입**해보자!
+- 새로 떠오르는 아이디어는 **바로 메모**하고 UI로 만들고 구현해보자!
 
 ## Minimum iOS deployment version 
 - iOS 13.0
 - 여전히 활발히 사용되는 기기들을 폭 넓게 지원하기 위해 최소 iOS 배포 타겟을 13.0으로 설정했습니다.
 
-## Third parties
+## Dependencies
 - RxSwift
 - ReactorKit
 - Swinject
+- Sqlite3
 - Then
 - Firebase Crashlytics
 - AcknowList
 - Lottie
+
+## 화면 구성 : )
 
 ## Architecture
 ![image](https://github.com/user-attachments/assets/8d635a2f-d293-440f-95f5-0b8826986d40)
