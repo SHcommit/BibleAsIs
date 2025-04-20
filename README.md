@@ -47,5 +47,12 @@
 ![2222](https://github.com/user-attachments/assets/a66b7e62-d2a4-4a0b-8e08-6e7e2345c76a)
 
 
-해야할거 : 아키텍처 , 깃허브 관리(private repoo), 모든 화면? 
+## Architecture
+![image](https://github.com/user-attachments/assets/42a5accc-830b-4e8a-b9d6-f37fe68aefd8)
+
+1. `Swinject`를 활용해 각 모듈은 자신만의 Assembly를 통해 특정 Container에 의존성을 등록합니다. 이러한 모듈들은 보통 Interface 모듈을 제공하여 다른 모듈들이 인터페이스에 의존할 수 있도록 합니다.
+2. Specific Feature Demo Target은 Sepcific Feature Module에서 의존하는 interface modules에 대한 구체타입, 모듈들을 알고 있고, 필요한 Assembly들을 조립하여 하나의 appDIContainer를 구성합니다.
+3. 여러 Feature Demo app들은 전부 각각 선택적으로 특정 모듈들의 Assembly 또는 Feature module assembly를 조립하여 빌드하고, 실행 가능한 구조를 가집니다.
+
+해야할거 : 아키텍처 , 깃허브 관리(private repoo), 모든 화면? 어떻게 프로젝트를 관리하는지
 담당: 디비설계, 피그마, 아이폰 개발 ㄷ,ㅇ
