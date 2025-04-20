@@ -76,6 +76,17 @@
 
 ## 화면 구성 : )
 
+<img src="https://github.com/user-attachments/assets/e601808a-7e30-4f15-b7c0-fda600d6b1d1" width="200">|<img src="https://github.com/user-attachments/assets/823a3d93-a7e6-434f-8664-804f4ab10c1f" width="200">|<img src="https://github.com/user-attachments/assets/8d7a5b88-8469-4855-958f-02539dec0acd" width="200">|
+|:-:|:-:|:-:|
+|`홈 화면`|`홈 화면 - 오늘의 말씀 묵상`|`홈 화면 - lazy loading scroll`|
+
+### 💪 도전 사항
+
+| # | 내용 |
+|---|------|
+| 1 | 자연스러운 애니메이션 |
+| 2 | 사용자가 스크롤 내려야만 동적으로 데이터를 받아와서 보여주는 기능을 구현 |
+
 
 
 ## Architecture
@@ -121,7 +132,7 @@ make clean
 ```
 1. Modules/Bible 등 private submodule 디렉터리 위치까지 이동
 2. 이 서브모듈은 역시 git repo에 대한 .git이 있으므로 독립적인 branch를 갖게 됨. 여기서 git stage에서 새롭게 변경 사항 커밋
-3. `../BibleAsIs/` 이 루트 디렉터리까지 다시 와서 서브모듈 업데이트 커밋
+3. "../BibleAsIs/" 이 루트 디렉터리까지 다시 와서 서브모듈 업데이트 커밋
 ```
 
 #### Case: git main module, submodules 같이 코드 수정한 경우
