@@ -48,7 +48,7 @@
 
 
 ## Architecture
-![image](https://github.com/user-attachments/assets/42a5accc-830b-4e8a-b9d6-f37fe68aefd8)
+![image](https://github.com/user-attachments/assets/1a0622f1-583c-49ae-962b-c8f414218794)
 
 1. `Swinject`를 활용해 각 모듈은 자신만의 Assembly를 통해 특정 Container에 의존성을 등록합니다. 이러한 모듈들은 보통 Interface 모듈을 제공하여 다른 모듈들이 인터페이스에 의존할 수 있도록 합니다.
 2. Specific Feature Demo Target은 Sepcific Feature Module에서 의존하는 interface modules에 대한 구체타입, 모듈들을 알고 있고, 필요한 Assembly들을 조립하여 하나의 appDIContainer를 구성합니다.
