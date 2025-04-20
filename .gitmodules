@@ -1,0 +1,3 @@
+[submodule "Modules/Bible"]
+	path = Modules/Bible
+	url = https://github.com/SHcommit/BibleAsIsBible.git
