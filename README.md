@@ -65,8 +65,8 @@
 - 여전히 활발히 사용되는 기기들을 폭 넓게 지원하기 위해 최소 iOS 배포 타겟을 13.0으로 설정했습니다.
 
 ## Dependencies
-- RxSwift
-- ReactorKit
+- Tuist (4.x)
+- RxSwift, ReactorKit
 - Swinject
 - Sqlite3
 - Then
