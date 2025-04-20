@@ -76,6 +76,8 @@
 
 ## 화면 구성 : )
 
+
+
 ## Architecture
 ![image](https://github.com/user-attachments/assets/8d635a2f-d293-440f-95f5-0b8826986d40)
 
@@ -98,11 +100,15 @@
   - 화면 전환시에 여전히 해당 코디네이터가 필요로 함으로 VC에서 `코디네이터가 화면 전환을 위해 지원하는 flow들. Flow Dependencies 인터페이스`를 strong own함으로 네비게이션컨트롤러 -> 뷰컨트롤러 -> Coordinator 순의 참조 구조로 생명주기가 자연스럽게 유지되도록 구성했습니다.
 
 
-## Project Execute
+## Build & Setup Guide
+### How to run BibleAsIs Project?
 ```
+/// origin 등록 후 받아보자! + .gitsubmodules 활용
+1. git pull --recurse-submodules origin develop
+
 /// 설치
 1. tuist install
-2. make generateDEV or make generateRPD ( For Release )
+2. make generateDEV or make generateRPD ( For release )
   - 환경 변수 세팅
 3. Feature 모듈을 새로 구성할 경우 해당 New feature module에서 의존하는 interface 의 구체 Module의 Assembly를 등록해서 실행시점에 등록해야 원활하게 돌아갑니다.
 
@@ -110,5 +116,17 @@
 make clean
 ```
 
-해야할거 :  깃허브 관리(private repoo), 모든 화면? 어떻게 프로젝트를 관리하는지
-담당: 디비설계, 피그마, 아이폰 개발 ㄷ,ㅇ
+### Git Submodule Workflow!
+#### Case: 단순 서브모듈 수정 후 커밋
+```
+1. Modules/Bible 등 private submodule 디렉터리 위치까지 이동
+2. 이 서브모듈은 역시 git repo에 대한 .git이 있으므로 독립적인 branch를 갖게 됨. 여기서 git stage에서 새롭게 변경 사항 커밋
+3. `../BibleAsIs/` 이 루트 디렉터리까지 다시 와서 서브모듈 업데이트 커밋
+```
+
+#### Case: git main module, submodules 같이 코드 수정한 경우
+```
+1. 반드시 서브 모듈들 부터 변경 사항 커밋 😅
+2. 각각의 서브 모듈들 수정 사항 커밋 후 루트 레포로 돌아와서 서브 모듈의 commit pointer 커밋
+```
+
