@@ -81,13 +81,43 @@
 |`홈 화면`|`홈 화면 - 오늘의 말씀 묵상`|`홈 화면 - lazy loading scroll`|
 
 ### 💪 도전 사항
+1. 자연스러운 애니메이션
+2. 사용자가 스크롤 내려야만 동적으로 데이터를 받아와서 보여주는 기능을 구현
 
-| # | 내용 |
-|---|------|
-| 1 | 자연스러운 애니메이션 |
-| 2 | 사용자가 스크롤 내려야만 동적으로 데이터를 받아와서 보여주는 기능을 구현 |
+---
 
+<img src="https://github.com/user-attachments/assets/c47f38d4-12c9-4d4e-bd77-1ea66ad90370" width="200">|<img src="https://github.com/user-attachments/assets/36d15f54-0581-4efa-b79b-a0db6b446c67" width="200">|<img src="https://github.com/user-attachments/assets/a0d21124-ddbf-44aa-b35d-6a70ca45ae4e" width="200">|
+|:-:|:-:|:-:|
+|`성경 목차 화면`|`성경 목차 expandable`|`Bible book 확장, 축소`|
 
+### 💪 도전 사항
+1. 편안하면서도 빠른 접근성
+
+---
+
+<img src="https://github.com/user-attachments/assets/388f64ab-bed4-48d1-9a06-56fd7620c8e3" width="200">|<img src="https://github.com/user-attachments/assets/4d442038-b621-414a-9288-fab84ddfe24c" width="200">|<img src="https://github.com/user-attachments/assets/1ed78d82-a3f3-44d1-9e12-cd03599950de" width="200">|<img src="https://github.com/user-attachments/assets/6067dd31-b313-4b8e-93b0-7a7e8b93b5cf" width="200">|
+|:-:|:-:|:-:|:-:|
+|`검색 입력 동작 화면`|`검색 결과 화면`|`검색 결과 없음 화면`|`검색 홈 화면`|
+
+### 💪 도전 사항
+- UISearchController 활용
+  - 성경 목차 화면 + 이 화면에서 처음 키보드 올라오는 속도가 느리므로 내부 동작을 미리 트리거 하여 입력 지연 최소화
+
+---
+
+<img src="https://github.com/user-attachments/assets/aee9cce4-adb4-4890-b78d-a8bc6a09dedc" width="200">|<img src="https://github.com/user-attachments/assets/9cfef3db-0ed5-44c4-8467-0bd3f6f1a39b" width="200">|<img src="https://github.com/user-attachments/assets/ccca6fe4-f228-4923-83ed-e42f9124d52c" width="200">|
+|:-:|:-:|:-:|
+|`성경 구절 마크들 활성화`|`하트, 하이라이트들`|`노트 진입 화면`|
+
+### 💪 도전 사항
+- 최소 타겟이 13.0이므로 iOS 15.0 기준 UITextView 터치 시 메뉴바 활성화 분기 처리를 대응해야 했음
+  - 초반 메뉴바 활성화 되기까지 동작이 UISearchController처럼 느리므로 미리 트리거 하여 지연 최소화 대응
+  - text가 동적으로 커짐, 축소됨에 따라 scroll bouncing 현상이 있었음(<a href="https://dev-with-precious-dreams.tistory.com/299">해결 과정 블로그 포스트 작성</a>)
+  - 노트 화면에서 초기 진입 시점 사용자 터치에 따라 바로 텍스트 작성 할 수 있게 기능 추가
+  - 초기 노트 작성 or 노트 수정 여부에 따라 네비게이션 메뉴 아이콘 및 저장 기능 대응
+  - 작성 된 노트의 수정 여부는 `Git commit`처럼 SHA-1 해시 활용해 내용 변경 이력 감지하는 방식 사용
+
+---
 
 ## Architecture
 ![image](https://github.com/user-attachments/assets/8d635a2f-d293-440f-95f5-0b8826986d40)
