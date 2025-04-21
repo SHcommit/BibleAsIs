@@ -304,10 +304,6 @@ public final class BibleReadingViewController: BaseViewController, View {
       .subscribe(onNext: { [weak self] shouldStartAudioPlay in
         guard let self else { return }
         guard shouldStartAudioPlay else { return }
-        ToastController.shared.showToast(
-          message: "무음 모드일 경우 오디오가 들리지 않을 수 있어요.",
-          position: .navBarBottom,
-          type: .warning)
         self.prepareSleepAudioPlay()
         self.sleepAudioPlayer.configure(totalDuration: reactor.currentState.remainingaudioPlayTime)
         self.sleepAudioPlayer.resume()
@@ -348,7 +344,8 @@ public final class BibleReadingViewController: BaseViewController, View {
   }
   
   func initSleepTimerExecutingView() {
-    sleepTimerExecutingView = .init()
+    sleepTimerExecutingView = SleepTimerExecutingView(frame: .zero)
+    sleepTimerExecutingView.setAutoLayout()
     sleepTimerExecutingView.clearButtonTap = { [weak self] in
       self?.reactor?.action.onNext(.sleepAudioCanceldByUser(elapsedSeconds: 0))
       ToastController.shared.showToast(message: "오디오가 종료됬습니다", type: .success)
