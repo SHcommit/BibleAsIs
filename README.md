@@ -58,7 +58,9 @@
 - iOS 앱 개발 및 출시
 
 ## Timeline & 마음가짐
-![image](https://github.com/user-attachments/assets/42802898-4273-4bde-b8c2-878c17b1096b)
+<img src="https://github.com/user-attachments/assets/715cadff-0595-424d-bf3d-e15ab3d5ff1f" height="430">
+
+<br/>
 
 - 익숙하지 않은 기술이라도 적극적으로 공부하고 적용해 사용자가 느낄 수 있는 `자연스럽게` 동작하는 앱을 만들고 출시해보자!
 - 더 좋은 화면 구성을 위해 다양한 성경 앱 뿐 아니라 다른 도서 앱들도 분석하며 좋은들을 참고해보자!
