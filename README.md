@@ -152,7 +152,7 @@ Navi -> AVC(RootVC) -> BVC -> CVC -> DVC. DVC에서 화면이 보여질 때 BVC�
 
 <img src="https://github.com/user-attachments/assets/aee9cce4-adb4-4890-b78d-a8bc6a09dedc" width="200">|<img src="https://github.com/user-attachments/assets/8c995de0-e292-48f1-b82b-e34d0b612309" width="200">|<img src="https://github.com/user-attachments/assets/aee9cce4-adb4-4890-b78d-a8bc6a09dedc" width="200">|<img src="https://github.com/user-attachments/assets/ccca6fe4-f228-4923-83ed-e42f9124d52c" width="200">|
 |:-:|:-:|:-:|:-:|
-|`성경 구절 마크들 활성화`|`제스처로 성경 읽기 화면 넘김`|`하트, 하이라이트들`|`노트 진입 화면`|
+|`성경 구절 마크들 활성화`|`성경 읽기 화면 제스쳐`|`하트/하이라이트`|`노트 진입 화면`|
 
 ### 💪 도전 사항
 
@@ -177,7 +177,7 @@ Navi -> AVC(RootVC) -> BVC -> CVC -> DVC. DVC에서 화면이 보여질 때 BVC�
 
 <img src="https://github.com/user-attachments/assets/dcbc9210-855d-4813-9c32-929853aa3449" width="200">|<img src="https://github.com/user-attachments/assets/97ab0fd4-156c-45c8-b972-a20620237713" width="200">|<img src="https://github.com/user-attachments/assets/18030588-4c89-4e81-8560-35028b0914ca" width="200">|<img src="https://github.com/user-attachments/assets/db4fd9ee-4bdb-402f-8f18-60b295c003e6" width="200">|
 |:-:|:-:|:-:|:-:|
-|`내 활동 - 맥 체인 체크 및 미션 진입 화면`|`내 활동 - 맥 체인 화면`|`체크 리스트 동작 화면`|`체크 리스트 화면`|
+|`맥 체인 체크/미션 진입 화면`|`맥 체인 화면`|`체크 리스트 동작 화면`|`체크 리스트 화면`|
 
 ### 💪 도전 사항
 - 줄에 작은 Day 미션들이 매달려 있는 효과를 주고 싶었고 이동할 때 바람에 흔들리는 애니메이션 효과를 주고 싶었음.
@@ -189,7 +189,7 @@ Navi -> AVC(RootVC) -> BVC -> CVC -> DVC. DVC에서 화면이 보여질 때 BVC�
 
 <img src="https://github.com/user-attachments/assets/029f81f4-d539-467d-bf96-fd45763c5d93" width="200">|<img src="https://github.com/user-attachments/assets/2592e799-1a01-4469-9512-f93055bbc6fa" width="200">|<img src="https://github.com/user-attachments/assets/7a0d4860-4969-43c6-a52b-45dfe56bf703" width="200">|<img src="https://github.com/user-attachments/assets/a5446983-ead7-4c4d-91b9-dab3692c45fb" width="200">|
 |:-:|:-:|:-:|:-:|
-|`내 활동 - 하트 화면`|`내 활동 - 하이라이트 빈 화면`|`형광펜->하트->노트 터치 동작 화면`|`내 활동 - 노트 리스트 화면`|
+|`하트 화면`|`하이라이트 빈 화면`|`형광펜->하트->노트 동작`|`노트 리스트 화면`|
 
 ### 💪 도전 사항
 
@@ -209,14 +209,25 @@ Navi -> AVC(RootVC) -> BVC -> CVC -> DVC. DVC에서 화면이 보여질 때 BVC�
   - 크롬이나 브라우저, 또는 책갈피 효과를 주고 싶었고 위 동영상 과 같이 같이 UI를 변경함.
   - 초기 구현했던 로직처럼 화면 위는 상단 메뉴 뷰 + 하단 Page Control로 구성된것은 동일했지만, 페이지별로 위에 책갈피(메뉴)를 붙여주면 네이버 시리즈 앱 처럼 사용자가 페이지를 넘기는 효과를 줄 때
   - 정말 보기 좋겠다는 생각이 들어 구현했으나 하단에 탭바가 여전히 고정되어 부자연스러워서 `.pageCurl` + IsDoubled 효과를 포기함.
----
-
-## Bible, DesignSystem은 GitSubmodule로 private하게 관리
-
-
----
 
 ## Build & Setup Guide
+
+- Bible, DesignSystem은 GitSubmodule로 private하게 관리합니다!
+
+<details>
+<summary> 📚 Bible module 디렉터리 구조/Project.swift (눌러서 펼쳐주세요)</summary>
+
+![image](https://github.com/user-attachments/assets/b9b695dd-6a54-44a2-8d05-f0dd8f340cc6)
+
+</details>
+
+<details>
+<summary> 📚 DesignSystem module 디렉터리 구조 (눌러서 펼쳐주세요)</summary>
+
+![image](https://github.com/user-attachments/assets/27da14a6-46b8-417f-b0be-dd677756d3c8)
+
+</details>
+
 ### How to run BibleAsIs Project?
 ```
 /// origin 등록 후 받아보자! + .gitsubmodules 활용
