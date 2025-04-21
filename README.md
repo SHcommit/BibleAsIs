@@ -1,8 +1,13 @@
+<img src="https://github.com/user-attachments/assets/54373e37-c9f9-40a3-9ff7-bc11fd559ae7" width="74" height="74" align="left"/>
+
 # 성경대로
 
 > 마음의 중심을 붙드는 성경 앱 - 성경대로
 
-### <a href="https://apps.apple.com/kr/app/%EC%84%B1%EA%B2%BD%EB%8C%80%EB%A1%9C/id6744650815">앱스토어 다운받기 ( 완전무료!!!!!! ) </a>
+<a href="https://apps.apple.com/kr/app/%EC%84%B1%EA%B2%BD%EB%8C%80%EB%A1%9C/id6744650815">
+    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="앱스토어에서 다운로드" height="40"/>
+</a>
+<br/><br/>
 
 ```
 통독표, 맥체인 읽기, 수면 타이머까지! 
@@ -203,6 +208,11 @@ Navi -> AVC(RootVC) -> BVC -> CVC -> DVC. DVC에서 화면이 보여질 때 BVC�
   - 정말 보기 좋겠다는 생각이 들어 구현했으나 하단에 탭바가 여전히 고정되어 부자연스러워서 `.pageCurl` + IsDoubled 효과를 포기함.
 ---
 
+## Bible, DesignSystem은 GitSubmodule로 private하게 관리
+
+
+---
+
 ## Build & Setup Guide
 ### How to run BibleAsIs Project?
 ```
@@ -232,4 +242,3 @@ make clean
 1. 반드시 서브 모듈들 부터 변경 사항 커밋 😅
 2. 각각의 서브 모듈들 수정 사항 커밋 후 루트 레포로 돌아와서 서브 모듈의 commit pointer 커밋
 ```
-
