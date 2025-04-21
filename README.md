@@ -82,23 +82,30 @@
 
 ![image](https://github.com/user-attachments/assets/8d635a2f-d293-440f-95f5-0b8826986d40)
 
-#### DI Container 활용
+<details>
+<summary>💉 DI Container 적용 Flow 소개 (눌러서 펼쳐주세요)</summary>
 1. `Swinject`를 활용해 각 모듈은 자신만의 Assembly를 통해 특정 Container에 의존성을 등록합니다. 이러한 모듈들은 보통 Interface 모듈을 제공하여 다른 모듈들이 인터페이스에 의존할 수 있도록 합니다.
 3. Specific Feature Demo Target은 Sepcific Feature Module에서 의존하는 interface modules에 대한 구체타입, 모듈들을 알고 있고, 필요한 Assembly들을 조립하여 하나의 appDIContainer를 구성합니다.
 4. 여러 Feature Demo app들은 전부 각각 선택적으로 특정 모듈들의 Assembly 또는 Feature module assembly를 조립하여 빌드하고, 실행 가능한 구조를 가집니다.
 5. 모든 코드에 대한 테스트가 아닌, 정말 필요로되는 로직들, 실수할 가능성이 조금이라도 있는 모듈들에 대해서 테스트를 진행했습니다. (e.g. Bible Module에서 CRUD 등등 - 실제 디비 접근이 아닌 인메모리 상에서 테스트)
 
-#### Coordinator or RxFlow ?!
-> RxFlow 도입을 위해 공부하였고 적용할까 생각했지만 보다 단순한 구조를 위해, Coordinator는 `뷰 컨트롤러의 생명주기` 및 `네비게이션 컨트롤러를 통한 화면 전환 제어` 역할에만 집중하도록 최소화 했습니다.
-> 이전 프로젝트들에서는 Coordinator간의 계층 구조를 상위 코디네이터가 관리했지만, 실제로 화면을 보여주는 주체는 `UIViewController`이며, 이는 `UINavigationController`가 강하게 참조하고 있기 때문에,
-> 별도의 Coordinator 계층 구조를 유지하지 않아도 충분하다고 판단하게 되었습니다.
-> Navi -> AVC(RootVC) -> BVC -> CVC -> DVC -> EVC. EVC에서 화면이 보여질 때 BVC로 가야한다면 `popToViewController(_:animated:)`를 통해서도 충분히 가능하라라 생각했습니다.
+</details>
 
-- 하나의 앱은 빌드 후 런타임시 필요로 되는 모듈들의 Assembly들을 Assembler가 조립(apply)하여 DI Graph를 가진 DI Container를 구성합니다.
+<details>
+<summary> 🖥 Custom Coordinator or RxFlow?! 채택 과정 소개 (눌러서 펼쳐주세요)</summary>
+<pre>
+RxFlow 도입을 위해 공부하였고 적용할까 생각했지만 보다 단순한 구조를 위해, Coordinator는 `뷰 컨트롤러의 생명주기` 및 `네비게이션 컨트롤러를 통한 화면 전환 제어` 역할에만 집중하도록 최소화 했습니다.
+이전 프로젝트들에서는 Coordinator간의 계층 구조를 상위 코디네이터가 관리했지만, 실제로 화면을 보여주는 주체는 `UIViewController`이며, 이는 `UINavigationController`가 강하게 참조하고 있기 때문에,
+별도의 Coordinator 계층 구조를 유지하지 않아도 충분하다고 판단하게 되었습니다.
+Navi -> AVC(RootVC) -> BVC -> CVC -> DVC -> EVC. EVC에서 화면이 보여질 때 BVC로 가야한다면 `popToViewController(_:animated:)`를 통해서도 충분히 가능하라라 생각했습니다.
+</pre>
+
+하나의 앱은 빌드 후 런타임시 필요로 되는 모듈들의 Assembly들을 Assembler가 조립(apply)하여 DI Graph를 가진 DI Container를 구성합니다.
 - 각각의 Feature 모듈은 Gateway를 Entry point로 하며, Specific Feature 모듈의 Gateway 내부에서는 `Coordiantor`가 ViewController 및 필요로 되는 모든 의존성들을 Assembler를 통해 등록된 Assembly로부터 구체 타입 생성 과정이 담긴 DI graph를 resolve하여 인스턴스들을 생성하고 주입합니다.
 - Coordinator는 뷰 컨트롤러 생성 및 화면 제어 역할을 갖습니다.
 - 상위 코디네이터가 하위 코디네이터를 명시적으로 강하게 참조하지 않기에, Gateway의 특정 함수 scope에서 코디네이터를 선언하고 뷰 컨트롤러를 생성하여 화면이 보여진 후 Gateway의 특정 함수 scope가 스택 프레임에서 해제될 때 생성됬었던 코디네이터 인스턴스는 함께 release 됩니다.
-  - 화면 전환시에 여전히 해당 코디네이터가 필요로 함으로 VC에서 `코디네이터가 화면 전환을 위해 지원하는 flow들. Flow Dependencies 인터페이스`를 strong own함으로 네비게이션컨트롤러 -> 뷰컨트롤러 -> Coordinator 순의 참조 구조로 생명주기가 자연스럽게 유지되도록 구성했습니다.
+- 화면 전환시에 여전히 해당 코디네이터가 필요로 함으로 VC에서 `코디네이터가 화면 전환을 위해 지원하는 flow들. Flow Dependencies 인터페이스`를 strong own함으로 네비게이션컨트롤러 -> 뷰컨트롤러 -> Coordinator 순의 참조 구조로 생명주기가 자연스럽게 유지되도록 구성했습니다.
+</details>
 
 ## 화면 구성 : )
 
@@ -131,11 +138,15 @@
 
 ---
 
-<img src="https://github.com/user-attachments/assets/aee9cce4-adb4-4890-b78d-a8bc6a09dedc" width="200">|<img src="https://github.com/user-attachments/assets/9cfef3db-0ed5-44c4-8467-0bd3f6f1a39b" width="200">|<img src="https://github.com/user-attachments/assets/ccca6fe4-f228-4923-83ed-e42f9124d52c" width="200">|
-|:-:|:-:|:-:|
-|`성경 구절 마크들 활성화`|`하트, 하이라이트들`|`노트 진입 화면`|
+<img src="https://github.com/user-attachments/assets/aee9cce4-adb4-4890-b78d-a8bc6a09dedc" width="200">|<img src="https://github.com/user-attachments/assets/8c995de0-e292-48f1-b82b-e34d0b612309" width="200">|<img src="https://github.com/user-attachments/assets/aee9cce4-adb4-4890-b78d-a8bc6a09dedc" width="200">|<img src="https://github.com/user-attachments/assets/ccca6fe4-f228-4923-83ed-e42f9124d52c" width="200">|
+|:-:|:-:|:-:|:-:|
+|`성경 구절 마크들 활성화`|`제스처로 성경 읽기 화면 넘김`|`하트, 하이라이트들`|`노트 진입 화면`|
 
 ### 💪 도전 사항
+- `성경 읽기 화면 챕터 넘김` 효과는 네이버 시리즈 앱 처럼 PageControl + isDoubled를 통해 정적인 데이터 환경에서 페이지 넘기는 효과를 성공적으로 구현했으나,
+  - 화면 전환시 실제로 비동기로 다음 화면의 Book의 모든 chapter에 대한 데이터를 그때 받아옴으로 화면 전환시 딜레이가 발생되어 이쁘지 않은 효과 발생됨...
+  - 로직이 아쉬워서 `내 활동` 탭의 각 화면 슬라이드 할 때 페이지 넘김 효과를 적용 했으나 하단에 탭바가 존재해 멋쩍은 페이지 넘김이 되서 아쉽게 적용하지 못했음 😭
+
 - 최소 타겟이 13.0이므로 iOS 15.0 기준 UITextView 터치 시 메뉴바 활성화 분기 처리를 대응해야 했음
   - 초반 메뉴바 활성화 되기까지 동작이 UISearchController처럼 느리므로 미리 트리거 하여 지연 최소화 대응
 - text가 동적으로 커짐과 축소됨에 따라 scroll bouncing 현상이 있었음(<a href="https://dev-with-precious-dreams.tistory.com/299">해결 과정 블로그 포스트 작성</a>)
@@ -146,13 +157,40 @@
 
 ---
 
-<img src="https://github.com/user-attachments/assets/aee9cce4-adb4-4890-b78d-a8bc6a09dedc" width="200">|<img src="https://github.com/user-attachments/assets/9cfef3db-0ed5-44c4-8467-0bd3f6f1a39b" width="200">|<img src="https://github.com/user-attachments/assets/ccca6fe4-f228-4923-83ed-e42f9124d52c" width="200">|
-|:-:|:-:|:-:|
-|`성경 구절 마크들 활성화`|`하트, 하이라이트들`|`노트 진입 화면`|
+<img src="https://github.com/user-attachments/assets/dcbc9210-855d-4813-9c32-929853aa3449" width="200">|<img src="https://github.com/user-attachments/assets/97ab0fd4-156c-45c8-b972-a20620237713" width="200">|<img src="https://github.com/user-attachments/assets/18030588-4c89-4e81-8560-35028b0914ca" width="200">|<img src="https://github.com/user-attachments/assets/db4fd9ee-4bdb-402f-8f18-60b295c003e6" width="200">|
+|:-:|:-:|:-:|:-:|
+|`내 활동 - 맥 체인 체크 및 미션 진입 화면`|`내 활동 - 맥 체인 화면`|`체크 리스트 동작 화면`|`체크 리스트 화면`|
+
+### 💪 도전 사항
+- 줄에 작은 Day 미션들이 매달려 있는 효과를 주고 싶었고 이동할 때 바람에 흔들리는 애니메이션 효과를 주고 싶었음
+  - (4개의 미션 성공시 Day 달력이 뒤에 검은 선을 기준으로 360도 돌아가며 작아지는 애니메이션을 구현했으나 UI상 별로여서 현재 기능 최종 적용)
+- 체크리스트 화면 들어갈 때 편안함을 주고 싶었음
+  - 초기에는 단순히 통독표를 체크하는 기능만 있었는데, 성경의 구절은 3만 1천 구절이고, 66권 각각의 chapter도 많기에 대쉬 보드처럼 한 눈에 볼 수 있도록 66권을 그룹화하고 그래프로 시각화
+
+---
+
+<img src="https://github.com/user-attachments/assets/029f81f4-d539-467d-bf96-fd45763c5d93" width="200">|<img src="https://github.com/user-attachments/assets/2592e799-1a01-4469-9512-f93055bbc6fa" width="200">|<img src="https://github.com/user-attachments/assets/7a0d4860-4969-43c6-a52b-45dfe56bf703" width="200">|<img src="https://github.com/user-attachments/assets/a5446983-ead7-4c4d-91b9-dab3692c45fb" width="200">|
+|:-:|:-:|:-:|:-:|
+|`내 활동 - 하트 화면`|`내 활동 - 하이라이트 빈 화면`|`형광펜->하트->노트 터치 동작 화면`|`내 활동 - 노트 리스트 화면`|
 
 ### 💪 도전 사항
 
+- 가장 큰 고민은, 앱 첫 실행 시 온보딩 화면을 제공하긴 했지만
+  - 사용자가 이후 화면을 둘러보면서 **온보딩 내용을 쉽게 잊게 될 것 같다는 점**이었음.
+  - 초기 구현은 단순히 비어있음을 알리는 일러스트를 보여주었지만,
+  - 하이라이트/하트/노트 화면을 처음 방문한 사용자에게
+  - **"어떻게 이 화면을 활용할 수 있는지"를 자연스럽게 알려주는 방법**이 필요하다고 느낌.
+  - 이에 따라, `노트 화면 접속 시(3번째 영상)`에는  
+    **"구절을 두 번 터치해보세요"** 라는 힌트를  
+    **작은 애니메이션으로 부각시켜 시선을 유도**하도록 구현함.  
+    추가로 하단에 기대 효과를 시각적으로 보여주는 **이미지 배너도 함께 추가**해 사용자의 이해를 도움.
 
+<img src="https://github.com/user-attachments/assets/06dfd090-7c13-4644-9502-4324e551f170" width="200">
+
+- 내 활동 탭에서 메뉴바는 초기에 위와 같은 형식으로 구현했었고, 스크롤 할 때 "나의 활동" 이 사라지도록 구현했었으나 좀 색 다름을 주고 싶었음.
+  - 크롬이나 브라우저, 또는 책갈피 효과를 주고 싶었고 위와 같이 UI를 변경함
+  - 초기 구현했던 로직처럼 화면 위는 상단 메뉴 뷰 + 하단 Page Control로 구성된것은 동일했지만, 페이지별로 위에 책갈피(메뉴)를 붙여주면 네이버 시리즈 앱 처럼 사용자가 페이지를 넘기는 효과를 줄 때
+  - 정말 보기 좋겠다는 생각이 들어 구현했으나 하단에 탭바가 여전히 고정되어 부자연스러워서 `.pageCurl` + IsDoubled 효과를 포기함.
 ---
 
 ## Build & Setup Guide
