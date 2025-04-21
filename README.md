@@ -86,6 +86,7 @@
 > Clean Architecture + Coordinator
 > - Reactor flow
 > - DI Container + Tuist
+> - Modular architecture
 
 ![image](https://github.com/user-attachments/assets/8d635a2f-d293-440f-95f5-0b8826986d40)
 
