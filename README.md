@@ -74,6 +74,32 @@
 - AcknowList
 - Lottie
 
+## Architecture
+
+> Clean Architecture + Coordinator
+> - Reactor flow
+> - DI Container + Tuist
+
+![image](https://github.com/user-attachments/assets/8d635a2f-d293-440f-95f5-0b8826986d40)
+
+#### DI Container 활용
+1. `Swinject`를 활용해 각 모듈은 자신만의 Assembly를 통해 특정 Container에 의존성을 등록합니다. 이러한 모듈들은 보통 Interface 모듈을 제공하여 다른 모듈들이 인터페이스에 의존할 수 있도록 합니다.
+3. Specific Feature Demo Target은 Sepcific Feature Module에서 의존하는 interface modules에 대한 구체타입, 모듈들을 알고 있고, 필요한 Assembly들을 조립하여 하나의 appDIContainer를 구성합니다.
+4. 여러 Feature Demo app들은 전부 각각 선택적으로 특정 모듈들의 Assembly 또는 Feature module assembly를 조립하여 빌드하고, 실행 가능한 구조를 가집니다.
+5. 모든 코드에 대한 테스트가 아닌, 정말 필요로되는 로직들, 실수할 가능성이 조금이라도 있는 모듈들에 대해서 테스트를 진행했습니다. (e.g. Bible Module에서 CRUD 등등 - 실제 디비 접근이 아닌 인메모리 상에서 테스트)
+
+#### Coordinator or RxFlow ?!
+> RxFlow 도입을 위해 공부하였고 적용할까 생각했지만 보다 단순한 구조를 위해, Coordinator는 `뷰 컨트롤러의 생명주기` 및 `네비게이션 컨트롤러를 통한 화면 전환 제어` 역할에만 집중하도록 최소화 했습니다.
+> 이전 프로젝트들에서는 Coordinator간의 계층 구조를 상위 코디네이터가 관리했지만, 실제로 화면을 보여주는 주체는 `UIViewController`이며, 이는 `UINavigationController`가 강하게 참조하고 있기 때문에,
+> 별도의 Coordinator 계층 구조를 유지하지 않아도 충분하다고 판단하게 되었습니다.
+> Navi -> AVC(RootVC) -> BVC -> CVC -> DVC -> EVC. EVC에서 화면이 보여질 때 BVC로 가야한다면 `popToViewController(_:animated:)`를 통해서도 충분히 가능하라라 생각했습니다.
+
+- 하나의 앱은 빌드 후 런타임시 필요로 되는 모듈들의 Assembly들을 Assembler가 조립(apply)하여 DI Graph를 가진 DI Container를 구성합니다.
+- 각각의 Feature 모듈은 Gateway를 Entry point로 하며, Specific Feature 모듈의 Gateway 내부에서는 `Coordiantor`가 ViewController 및 필요로 되는 모든 의존성들을 Assembler를 통해 등록된 Assembly로부터 구체 타입 생성 과정이 담긴 DI graph를 resolve하여 인스턴스들을 생성하고 주입합니다.
+- Coordinator는 뷰 컨트롤러 생성 및 화면 제어 역할을 갖습니다.
+- 상위 코디네이터가 하위 코디네이터를 명시적으로 강하게 참조하지 않기에, Gateway의 특정 함수 scope에서 코디네이터를 선언하고 뷰 컨트롤러를 생성하여 화면이 보여진 후 Gateway의 특정 함수 scope가 스택 프레임에서 해제될 때 생성됬었던 코디네이터 인스턴스는 함께 release 됩니다.
+  - 화면 전환시에 여전히 해당 코디네이터가 필요로 함으로 VC에서 `코디네이터가 화면 전환을 위해 지원하는 flow들. Flow Dependencies 인터페이스`를 strong own함으로 네비게이션컨트롤러 -> 뷰컨트롤러 -> Coordinator 순의 참조 구조로 생명주기가 자연스럽게 유지되도록 구성했습니다.
+
 ## 화면 구성 : )
 
 <img src="https://github.com/user-attachments/assets/e601808a-7e30-4f15-b7c0-fda600d6b1d1" width="200">|<img src="https://github.com/user-attachments/assets/823a3d93-a7e6-434f-8664-804f4ab10c1f" width="200">|<img src="https://github.com/user-attachments/assets/8d7a5b88-8469-4855-958f-02539dec0acd" width="200">|
@@ -112,34 +138,22 @@
 ### 💪 도전 사항
 - 최소 타겟이 13.0이므로 iOS 15.0 기준 UITextView 터치 시 메뉴바 활성화 분기 처리를 대응해야 했음
   - 초반 메뉴바 활성화 되기까지 동작이 UISearchController처럼 느리므로 미리 트리거 하여 지연 최소화 대응
-  - text가 동적으로 커짐, 축소됨에 따라 scroll bouncing 현상이 있었음(<a href="https://dev-with-precious-dreams.tistory.com/299">해결 과정 블로그 포스트 작성</a>)
-  - 노트 화면에서 초기 진입 시점 사용자 터치에 따라 바로 텍스트 작성 할 수 있게 기능 추가
-  - 초기 노트 작성 or 노트 수정 여부에 따라 네비게이션 메뉴 아이콘 및 저장 기능 대응
-  - 작성 된 노트의 수정 여부는 `Git commit`처럼 SHA-1 해시 활용해 내용 변경 이력 감지하는 방식 사용
+- text가 동적으로 커짐과 축소됨에 따라 scroll bouncing 현상이 있었음(<a href="https://dev-with-precious-dreams.tistory.com/299">해결 과정 블로그 포스트 작성</a>)
+- 노트 화면에서 초기 진입 시점 사용자 터치에 따라 바로 텍스트 작성 할 수 있게 기능 추가
+- 초기 노트 작성 or 노트 수정 여부에 따라 네비게이션 메뉴 아이콘 및 저장 기능 대응
+- 작성 된 노트의 수정 여부는 `Git commit`처럼 SHA-1 해시 활용해 내용 변경 이력 감지하는 방식 사용
+- 노트 진입시 초기 키보드 올라오는 활성화가 기기별 느리게 동작될 수 있기에 사전에 키보드 관련 프리로드 함으로 대응
 
 ---
 
-## Architecture
-![image](https://github.com/user-attachments/assets/8d635a2f-d293-440f-95f5-0b8826986d40)
+<img src="https://github.com/user-attachments/assets/aee9cce4-adb4-4890-b78d-a8bc6a09dedc" width="200">|<img src="https://github.com/user-attachments/assets/9cfef3db-0ed5-44c4-8467-0bd3f6f1a39b" width="200">|<img src="https://github.com/user-attachments/assets/ccca6fe4-f228-4923-83ed-e42f9124d52c" width="200">|
+|:-:|:-:|:-:|
+|`성경 구절 마크들 활성화`|`하트, 하이라이트들`|`노트 진입 화면`|
 
-#### DI Container 활용
-1. `Swinject`를 활용해 각 모듈은 자신만의 Assembly를 통해 특정 Container에 의존성을 등록합니다. 이러한 모듈들은 보통 Interface 모듈을 제공하여 다른 모듈들이 인터페이스에 의존할 수 있도록 합니다.
-3. Specific Feature Demo Target은 Sepcific Feature Module에서 의존하는 interface modules에 대한 구체타입, 모듈들을 알고 있고, 필요한 Assembly들을 조립하여 하나의 appDIContainer를 구성합니다.
-4. 여러 Feature Demo app들은 전부 각각 선택적으로 특정 모듈들의 Assembly 또는 Feature module assembly를 조립하여 빌드하고, 실행 가능한 구조를 가집니다.
-5. 모든 코드에 대한 테스트가 아닌, 정말 필요로되는 로직들, 실수할 가능성이 조금이라도 있는 모듈들에 대해서 테스트를 진행했습니다. (e.g. Bible Module에서 CRUD 등등 - 실제 디비 접근이 아닌 인메모리 상에서 테스트)
+### 💪 도전 사항
 
-#### Coordinator or RxFlow ?!
-> RxFlow 도입을 위해 공부하였고 적용할까 생각했지만 보다 단순한 구조를 위해, Coordinator는 `뷰 컨트롤러의 생명주기` 및 `네비게이션 컨트롤러를 통한 화면 전환 제어` 역할에만 집중하도록 최소화 했습니다.
-> 이전 프로젝트들에서는 Coordinator간의 계층 구조를 상위 코디네이터가 관리했지만, 실제로 화면을 보여주는 주체는 `UIViewController`이며, 이는 `UINavigationController`가 강하게 참조하고 있기 때문에,
-> 별도의 Coordinator 계층 구조를 유지하지 않아도 충분하다고 판단하게 되었습니다.
-> Navi -> AVC(RootVC) -> BVC -> CVC -> DVC -> EVC. EVC에서 화면이 보여질 때 BVC로 가야한다면 `popToViewController(_:animated:)`를 통해서도 충분히 가능하라라 생각했습니다.
 
-- 하나의 앱은 빌드 후 런타임시 필요로 되는 모듈들의 Assembly들을 Assembler가 조립(apply)하여 DI Graph를 가진 DI Container를 구성합니다.
-- 각각의 Feature 모듈은 Gateway를 Entry point로 하며, Specific Feature 모듈의 Gateway 내부에서는 `Coordiantor`가 ViewController 및 필요로 되는 모든 의존성들을 Assembler를 통해 등록된 Assembly로부터 구체 타입 생성 과정이 담긴 DI graph를 resolve하여 인스턴스들을 생성하고 주입합니다.
-- Coordinator는 뷰 컨트롤러 생성 및 화면 제어 역할을 갖습니다.
-- 상위 코디네이터가 하위 코디네이터를 명시적으로 강하게 참조하지 않기에, Gateway의 특정 함수 scope에서 코디네이터를 선언하고 뷰 컨트롤러를 생성하여 화면이 보여진 후 Gateway의 특정 함수 scope가 스택 프레임에서 해제될 때 생성됬었던 코디네이터 인스턴스는 함께 release 됩니다.
-  - 화면 전환시에 여전히 해당 코디네이터가 필요로 함으로 VC에서 `코디네이터가 화면 전환을 위해 지원하는 flow들. Flow Dependencies 인터페이스`를 strong own함으로 네비게이션컨트롤러 -> 뷰컨트롤러 -> Coordinator 순의 참조 구조로 생명주기가 자연스럽게 유지되도록 구성했습니다.
-
+---
 
 ## Build & Setup Guide
 ### How to run BibleAsIs Project?
