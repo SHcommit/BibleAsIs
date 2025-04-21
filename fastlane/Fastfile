@@ -1,0 +1,31 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "개발 타겟 인증서 & 프로비저닝 설치 -> Signing 디렉터리"
+  lane :setup_dev do
+    get_certificates(
+      development: true,
+      output_path: "../Signing"
+    )
+    get_provisioning_profile(
+      app_identifier: "com.BibleAsIs.app"
+      development: false,
+      output_path: "../Signing"
+    )
+  end
+end

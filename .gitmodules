@@ -1,0 +1,8 @@
+[submodule "Modules/Bible"]
+	path = Modules/Bible
+	url = https://github.com/SHcommit/BibleAsIsBible.git
+	branch = bibleDevelop
+[submodule "Modules/DesignSystem"]
+	path = Modules/DesignSystem
+	url = https://github.com/SHcommit/BibleAsIsDesignSystem.git
+	branch = designSystemDevelop

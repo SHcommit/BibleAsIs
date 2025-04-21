@@ -1,0 +1,33 @@
+import RxSwift
+import ReactorKit
+
+final class {{name}}Reactor: Reactor {
+  // MARK: - Constant
+  enum Action {
+  
+  }
+
+  enum Mutation {
+
+  }
+
+  enum State {
+  
+  }
+
+  // MARK: - Properties
+  var initialState = State()
+}
+
+// MARK: - Reactor
+extension {{name}}Reactor {
+  func mutation(action: Action) -> Observable<Mutation> {
+    
+  }
+
+  func reduce(state: State, mutation: Mutation) -> State {
+    var state = state
+    
+    return state
+  }
+}
